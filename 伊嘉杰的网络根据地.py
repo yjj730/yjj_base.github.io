@@ -184,15 +184,17 @@ def page6():
     for i in range(len(m_l)):
         m_l[i] = m_l[i].split("#")
     for i in m_l:
+        st.write(i[3])
         st.write(i[1],":",i[2])
     name = st.text_input("留言者：")
     n_m = st.text_input("想要说的话：")
+    n_d = st.date_input("输入日期")
     if st.button("留言"):
-        m_l.append([str(int(m_l[-1][0])+1),name,n_m])
+        m_l.append([str(int(m_l[-1][0])+1),name,n_m,n_d])
         with open("leave_messages.txt","w",encoding="utf-8") as f:
             m = ""
             for i in m_l:
-                m += i[0]+ "#" + i[1] + "#" + i[2] + "\n"
+                m += i[0]+ "#" + i[1] + "#" + i[2] + "#" + i[3] + "\n"
             m = m[:-1]
             f.write(m)
 
@@ -202,6 +204,8 @@ def page7():
     st.write("网站开始开发")
     st.text("2025/7/22")
     st.write("网站上传到公网")
+    st.text("2025/7/23")
+    st.write("网站基础UI设计完成")
     
 if page == "自我介绍":
     page1()
