@@ -8,30 +8,25 @@ st.markdown(
     <style>
     /* 全局背景设置 */
     body, .stApp {
-        background-color: #f5f9ff;  /* 淡蓝色背景 */
-        background-image: linear-gradient(120deg, #e0f7fa 0%, #f5f9ff 100%);
         background-color: #f5f9ff !important;  /* 深蓝色背景 */
-        background-image: linear-gradient(160deg, #1a1f2e 0%, #f5f9ff 100%);
+        background-image: linear-gradient(160deg, #000000 0%, #FFFFFF 100%);
         color: white;
     }
 
-    /* 主内容区背景 */
-    .main .block-container {
-        background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 15px;
-        padding: 2rem;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-    }
 
     /* 侧边栏背景 */
     section[data-testid="stSidebar"] {
         background-color: #AFF3FF !important;  /* 深蓝色背景 */
-        background-image: linear-gradient(160deg, #f5f9ff 0%, #AFF3FF 100%);
+        background-image: linear-gradient(160deg, #BBBBBB 0%, #FFFFFF 100%);
         color: white;
     }
 
+    /* 按钮容器悬停效果 */
+    .stButton>button:hover {
+        background-color: #FFA05F !important;
+        transform: scale(1.05);
+    }
+    
     </style>
     """,
     unsafe_allow_html=True
