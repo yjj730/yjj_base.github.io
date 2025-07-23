@@ -8,7 +8,7 @@ st.markdown(
     <style>
     /* 全局背景设置 */
     body, .stApp {
-        background-color: #f5f9ff !important;  /* 深蓝色背景 */
+        background-color: #FF0000 !important;  /* 深蓝色背景 */
         background-image: linear-gradient(160deg, #000000 0%, #FFFFFF 100%);
         color: white;
     }
@@ -16,8 +16,8 @@ st.markdown(
 
     /* 侧边栏背景 */
     section[data-testid="stSidebar"] {
-        background-color: #AFF3FF !important;  /* 深蓝色背景 */
-        background-image: linear-gradient(160deg, #BBBBBB 0%, #FFFFFF 100%);
+        background-color: #00FFFF !important;  /* 深蓝色背景 */
+        background-image: linear-gradient(160deg, #AAAAAA 0%, #FFFFFF 100%);
         color: white;
     }
 
