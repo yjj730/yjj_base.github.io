@@ -210,7 +210,7 @@ def page6():
                 lines.append("#".join(str(field) for field in msg))
             f.write("\n".join(lines))
         st.success("留言成功！")
-        st.experimental_rerun()
+        st.experimental_rerun())
 
 def page7():
     st.title("网页日志")
