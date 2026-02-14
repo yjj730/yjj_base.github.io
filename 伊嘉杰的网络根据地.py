@@ -178,16 +178,20 @@ def page5():
         st.link_button("HTML太阳系3D模拟实现方案","https://pan.baidu.com/s/18FfRxiNkBV-8Fmy9ATM71w?pwd=base 提取码: base")
 def page6():
     st.title("聊天社区")
+    if not os.path.exists("leave_messages.txt"):
+        with open("leave_messages.txt", "w", encoding="utf-8") as f:
+            f.write("")
     with open("leave_messages.txt", "r", encoding="utf-8") as f:
         content = f.read()
     if content.strip() == "":
-        m_l = []   # 空文件处理
+        m_l = []
     else:
-        m_l = [line.split("#") for line in content.split("\n") if line]
-    
+        m_l = [line.split("#") for line in content.split("\n") if line.strip() != ""]
     for msg in m_l:
-        st.write(f"{msg[1]}: {msg[2]} ({msg[3]})")
-    
+        if len(msg) >= 4:
+            st.write(f"{msg[1]}: {msg[2]} ({msg[3]})")
+        else:
+            st.write("存在格式错误的留言")
     name = st.text_input("留言者：")
     n_m = st.text_input("想要说的话：")
     n_d = st.date_input("输入日期")
@@ -195,8 +199,18 @@ def page6():
         if not m_l:
             new_id = "1"
         else:
-            new_id = str(int(m_l[-1][0]) + 1)
+            try:
+                new_id = str(int(m_l[-1][0]) + 1)
+            except (ValueError, IndexError):
+                new_id = str(len(m_l) + 1)
         m_l.append([new_id, name, n_m, str(n_d)])
+        with open("leave_messages.txt", "w", encoding="utf-8") as f:
+            lines = []
+            for msg in m_l:
+                lines.append("#".join(str(field) for field in msg))
+            f.write("\n".join(lines))
+        st.success("留言成功！")
+        st.experimental_rerun()
 
 def page7():
     st.title("网页日志")
