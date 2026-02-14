@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from PIL import Image,ImageMath
 import datetime
 page = st.sidebar.radio("我的主页",["自我介绍","兴趣推荐","图片处理","智能词典","程序分享","聊天社区","网页日志"])
