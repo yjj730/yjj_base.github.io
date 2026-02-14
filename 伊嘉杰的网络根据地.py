@@ -184,7 +184,7 @@ def page6():
     for i in range(len(m_l)):
         m_l[i] = m_l[i].split("#")
     for i in m_l:
-        st.write(i[3])
+        st.write(i[1])
         st.write(i[1],":",i[2])
     name = st.text_input("留言者：")
     n_m = st.text_input("想要说的话：")
