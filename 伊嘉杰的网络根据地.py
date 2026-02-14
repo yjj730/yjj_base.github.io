@@ -177,26 +177,26 @@ def page5():
         st.link_button("病毒","https://pan.baidu.com/s/1H1hTBqMSaNnlJpEFD65b4g?pwd=base 提取码: base")
         st.link_button("HTML太阳系3D模拟实现方案","https://pan.baidu.com/s/18FfRxiNkBV-8Fmy9ATM71w?pwd=base 提取码: base")
 def page6():
-    #聊天社区
     st.title("聊天社区")
-    with open("leave_messages.txt","r",encoding="utf-8") as f:
-        m_l = f.read().split("\n")
-    for i in range(len(m_l)):
-        m_l[i] = m_l[i].split("#")
-    for i in m_l:
-        st.write(i[1])
-        st.write(i[1],":",i[2])
+    with open("leave_messages.txt", "r", encoding="utf-8") as f:
+        content = f.read()
+    if content.strip() == "":
+        m_l = []   # 空文件处理
+    else:
+        m_l = [line.split("#") for line in content.split("\n") if line]
+    
+    for msg in m_l:
+        st.write(f"{msg[1]}: {msg[2]} ({msg[3]})")
+    
     name = st.text_input("留言者：")
     n_m = st.text_input("想要说的话：")
     n_d = st.date_input("输入日期")
     if st.button("留言"):
-        m_l.append([str(int(m_l[-1][0])+1),name,n_m,n_d])
-        with open("leave_messages.txt","w",encoding="utf-8") as f:
-            m = ""
-            for i in m_l:
-                m += i[0]+ "#" + i[1] + "#" + i[2] + "#" + i[3] + "\n"
-            m = m[:-1]
-            f.write(m)
+        if not m_l:
+            new_id = "1"
+        else:
+            new_id = str(int(m_l[-1][0]) + 1)
+        m_l.append([new_id, name, n_m, str(n_d)])
 
 def page7():
     st.title("网页日志")
